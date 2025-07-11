@@ -23,6 +23,7 @@ app.use((req: Request, res: Response) => {
       name: "404 Not found",
       message: "The requested route does not exist on the server",
       path: req.originalUrl,
+      method: req.method,
     },
   });
 });
