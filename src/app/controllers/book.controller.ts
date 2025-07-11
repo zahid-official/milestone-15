@@ -49,6 +49,25 @@ const bookRouter = express.Router();
       }
     }
   );
+
+  // get a book
+  bookRouter.get(
+    "/:bookId",
+    async (req: Request, res: Response, next: NextFunction) => {
+      try {
+        const id = req.params.bookId;
+        const result = await Book.findById(id);
+
+        res.json({
+          success: true,
+          message: "Book retrieved successfully",
+          data: result,
+        });
+      } catch (error) {
+        next(error);
+      }
+    }
+  );
 }
 
 // create operations
