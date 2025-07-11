@@ -49,25 +49,6 @@ const bookRouter = express.Router();
       }
     }
   );
-
-  // get a book
-  bookRouter.get(
-    "/:bookId",
-    async (req: Request, res: Response, next: NextFunction) => {
-      try {
-        const id = req.params.bookId;
-        const result = await Book.findById(id);
-
-        res.json({
-          success: true,
-          message: "Book retrieved successfully",
-          data: result,
-        });
-      } catch (error) {
-        next();
-      }
-    }
-  );
 }
 
 // create operations
@@ -90,4 +71,30 @@ const bookRouter = express.Router();
   );
 }
 
+// update operations
+{
+  // update a book
+  bookRouter.put(
+    "/:bookId",
+    async (req: Request, res: Response, next: NextFunction) => {
+      try {
+        const id = req.params.bookId;
+        const body = await bookZodSchema.parseAsync(req.body);
+
+        const result = await Book.findByIdAndUpdate(id, body, {
+          new: true,
+          runValidators: true,
+        });
+
+        res.json({
+          success: true,
+          message: "Book updated successfully",
+          data: result,
+        });
+      } catch (error) {
+        next(error);
+      }
+    }
+  );
+}
 export default bookRouter;
