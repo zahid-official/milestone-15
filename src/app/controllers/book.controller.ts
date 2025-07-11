@@ -116,4 +116,35 @@ const bookRouter = express.Router();
     }
   );
 }
+
+// delete operations
+{
+  bookRouter.delete(
+    "/:bookId",
+    async (req: Request, res: Response, next: NextFunction) => {
+      try {
+        const id = req.params.bookId;
+
+        // validation
+        const isExists = await Book.exists({ _id: id });
+        if (!isExists) {
+          return res.status(404).json({
+            success: false,
+            message: "Book not found",
+            data: null,
+          });
+        }
+
+        await Book.findByIdAndDelete(id);
+        res.json({
+          success: true,
+          message: "Book deleted successfully",
+          data: null,
+        });
+      } catch (error) {
+        next(error);
+      }
+    }
+  );
+}
 export default bookRouter;
