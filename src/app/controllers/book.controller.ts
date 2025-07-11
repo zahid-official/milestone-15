@@ -5,8 +5,9 @@ import bookZodSchema from "../zodSchemas/book.zod";
 // book router
 const bookRouter = express.Router();
 
-// get operations
+// read operations
 {
+  // get all books
   bookRouter.get(
     "/",
     async (req: Request, res: Response, next: NextFunction) => {
@@ -14,7 +15,7 @@ const bookRouter = express.Router();
         const filter = req.query.filter || "";
         const sort = req.query.sort || "asc";
         const sortBy = req.query.sortBy || "createdAt";
-        const limit = Number(req.query.limit || "100");
+        const limit = Number(req.query.limit || "10");
 
         // filter condition
         const query =
@@ -37,13 +38,33 @@ const bookRouter = express.Router();
             [sortField]: sortOrder,
           })
           .limit(limit);
+
         res.json({
           success: true,
-          message: "Book created successfully",
+          message: "Books retrieved successfully",
           data: result,
         });
       } catch (error) {
         next(error);
+      }
+    }
+  );
+
+  // get a book
+  bookRouter.get(
+    "/:bookId",
+    async (req: Request, res: Response, next: NextFunction) => {
+      try {
+        const id = req.params.bookId;
+        const result = await Book.findById(id);
+
+        res.json({
+          success: true,
+          message: "Book retrieved successfully",
+          data: result,
+        });
+      } catch (error) {
+        next();
       }
     }
   );
