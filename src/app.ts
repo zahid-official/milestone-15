@@ -1,6 +1,7 @@
 import express, { Application, NextFunction, Request, Response } from "express";
 import bookRouter from "./app/controllers/book.controller";
 import { ZodError } from "zod";
+import borrowRouter from "./app/controllers/borrow.controller";
 
 // application
 const app: Application = express();
@@ -8,6 +9,7 @@ const app: Application = express();
 // middleware
 app.use(express.json());
 app.use("/api/books", bookRouter);
+app.use("/api/borrow", borrowRouter);
 
 // root route
 app.get("/", (req: Request, res: Response) => {
