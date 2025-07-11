@@ -7,11 +7,23 @@ const app: Application = express();
 
 // middleware
 app.use(express.json());
-app.use("/books", bookRouter);
+app.use("/api/books", bookRouter);
 
 // root route
 app.get("/", (req: Request, res: Response) => {
   res.send("Server connected successfully");
+});
+
+// handle route error
+app.use((req: Request, res: Response) => {
+  res.status(404).json({
+    message: "Route not found",
+    success: false,
+    error: {
+      name: "404 Not found",
+      message: "The requested route does not exist on the server",
+    },
+  });
 });
 
 // global error
