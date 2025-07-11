@@ -22,6 +22,7 @@ app.use((req: Request, res: Response) => {
     error: {
       name: "404 Not found",
       message: "The requested route does not exist on the server",
+      path: req.originalUrl,
     },
   });
 });
@@ -75,7 +76,11 @@ app.use((error: any, req: Request, res: Response, next: NextFunction) => {
   res.status(error.status || 500).json({
     message: error.message || "Something went wrong",
     success: false,
-    error: error,
+    error: {
+      name: error.name || "InternalServerError",
+      description: error.description || "An unexpected error occurred.",
+      type: error.type,
+    },
   });
 });
 
