@@ -6,6 +6,61 @@ import Book from "../models/book.model";
 // borrow router
 const borrowRouter = express.Router();
 
+// read operations
+{
+  borrowRouter.get(
+    "/",
+    async (req: Request, res: Response, next: NextFunction) => {
+      try {
+        const result = await Borrow.aggregate([
+          // state-1 group books by objectId
+          {
+            $group: {
+              _id: "$book",
+              totalQuantity: { $sum: "$quantity" },
+            },
+          },
+
+          // Stage 2: join with bookCollection to get book details
+          {
+            $lookup: {
+              from: "bookCollection",
+              localField: "_id",
+              foreignField: "_id",
+              as: "bookDetails",
+            },
+          },
+
+          // stage-3 unwind book field array
+          {
+            $unwind: "$bookDetails",
+          },
+
+          // stage-4 final output
+          {
+            $project: {
+              _id: 0,
+              book: {
+                title: "$bookDetails.title",
+                isbn: "$bookDetails.isbn",
+              },
+              totalQuantity: 1,
+            },
+          },
+        ]);
+
+        res.json({
+          success: true,
+          message: "Borrowed books summary retrieved successfully",
+          data: result,
+        });
+      } catch (error) {
+        next(error);
+      }
+    }
+  );
+}
+
 // create operations
 {
   borrowRouter.post(
