@@ -39,6 +39,16 @@ const bookSchema = new Schema<BookInterface, BookStaticMethod>(
   }
 );
 
+// pre-save middleware for available
+bookSchema.pre("save", function (next) {
+  if (this.copies === 0) {
+    this.available = false;
+  } else {
+    this.available = true;
+  }
+  next();
+});
+
 // static method for borrow book
 bookSchema.static(
   "borrowBook",

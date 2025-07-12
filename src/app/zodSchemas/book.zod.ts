@@ -57,7 +57,7 @@ const bookZodSchema = z.object({
     .boolean({
       error: (issue) => "Available must be a boolean",
     })
-    .default(true),
+    .optional(),
 });
 
 export default bookZodSchema;
