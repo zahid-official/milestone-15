@@ -56,10 +56,10 @@ const bookRouter = express.Router();
     async (req: Request, res: Response, next: NextFunction) => {
       try {
         const id = req.params.bookId;
+        const result = await Book.findById(id);
 
         // validation
-        const book = await Book.findById(id);
-        if (!book) {
+        if (!result) {
           const error = new Error("Book not found") as any;
           error.status = 404;
           error.name = "404 Not found";
@@ -67,8 +67,6 @@ const bookRouter = express.Router();
             "The provided book ID is invalid. Please ensure you are using a valid ID that exists in the book collection.";
           throw error;
         }
-
-        const result = await Book.findById(id);
 
         res.json({
           success: true,
@@ -110,10 +108,13 @@ const bookRouter = express.Router();
       try {
         const id = req.params.bookId;
         const body = await bookUpdateZodSchema.parseAsync(req.body);
+        const result = await Book.findByIdAndUpdate(id, body, {
+          new: true,
+          runValidators: true,
+        });
 
         // validation
-        const book = await Book.findById(id);
-        if (!book) {
+        if (!result) {
           const error = new Error("Book not found") as any;
           error.status = 404;
           error.name = "404 Not found";
@@ -121,11 +122,6 @@ const bookRouter = express.Router();
             "The provided book ID is invalid. Please ensure you are using a valid ID that exists in the book collection.";
           throw error;
         }
-
-        const result = await Book.findByIdAndUpdate(id, body, {
-          new: true,
-          runValidators: true,
-        });
 
         res.json({
           success: true,
@@ -146,10 +142,10 @@ const bookRouter = express.Router();
     async (req: Request, res: Response, next: NextFunction) => {
       try {
         const id = req.params.bookId;
+        const result = await Book.findByIdAndDelete(id);
 
         // validation
-        const book = await Book.findById(id);
-        if (!book) {
+        if (!result) {
           const error = new Error("Book not found") as any;
           error.status = 404;
           error.name = "404 Not found";
@@ -158,7 +154,6 @@ const bookRouter = express.Router();
           throw error;
         }
 
-        await Book.findByIdAndDelete(id);
         res.json({
           success: true,
           message: "Book deleted successfully",
