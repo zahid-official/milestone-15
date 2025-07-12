@@ -60,4 +60,7 @@ const bookZodSchema = z.object({
     .optional(),
 });
 
+// create a partial schema for update
+export const bookUpdateZodSchema = bookZodSchema.partial();
+
 export default bookZodSchema;

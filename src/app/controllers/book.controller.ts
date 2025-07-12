@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import Book from "../models/book.model";
-import bookZodSchema from "../zodSchemas/book.zod";
+import bookZodSchema, { bookUpdateZodSchema } from "../zodSchemas/book.zod";
 
 // book router
 const bookRouter = express.Router();
@@ -110,7 +110,7 @@ const bookRouter = express.Router();
     async (req: Request, res: Response, next: NextFunction) => {
       try {
         const id = req.params.bookId;
-        const body = await bookZodSchema.parseAsync(req.body);
+        const body = await bookUpdateZodSchema.parseAsync(req.body);
 
         // validation
         const isExists = await Book.exists({ _id: id });
