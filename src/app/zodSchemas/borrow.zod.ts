@@ -2,6 +2,7 @@ import { Types } from "mongoose";
 import { z } from "zod";
 
 const borrowZodSchema = z.object({
+  // book
   book: z
     .string({
       error: (issue) =>
@@ -12,6 +13,8 @@ const borrowZodSchema = z.object({
     .refine((value) => Types.ObjectId.isValid(value), {
       error: "Invalid ObjectId",
     }),
+
+  //quantity
   quantity: z
     .number({
       error: (issue) =>
@@ -21,6 +24,8 @@ const borrowZodSchema = z.object({
     })
     .int("Quantity must be an integer")
     .min(1, "Quantity must be a positive integer"),
+
+  // dueDate
   dueDate: z
     .string({
       error: (issue) =>

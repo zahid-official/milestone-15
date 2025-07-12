@@ -1,8 +1,8 @@
 import express, { Application, Request, Response } from "express";
 import bookRouter from "./app/controllers/book.controller";
 import borrowRouter from "./app/controllers/borrow.controller";
-import globalErrorHandler from "./app/middleware/globalErrorHandler";
-import routeNotFoundHandler from "./app/middleware/routeNotFoundHandler";
+import globalErrorHandler from "./app/middlewares/globalErrorHandler";
+import routeNotFoundHandler from "./app/middlewares/routeNotFoundHandler";
 
 // application
 const app: Application = express();

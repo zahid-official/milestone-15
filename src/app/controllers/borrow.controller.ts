@@ -70,7 +70,7 @@ const borrowRouter = express.Router();
         const body = await borrowZodSchema.parseAsync(req.body);
 
         // check book availability and update database
-        const book = await Book.borrowBook(body?.book, body?.quantity);
+        await Book.borrowBook(body?.book, body?.quantity);
 
         const result = await Borrow.create(body);
 
