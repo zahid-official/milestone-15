@@ -56,6 +56,18 @@ const bookRouter = express.Router();
     async (req: Request, res: Response, next: NextFunction) => {
       try {
         const id = req.params.bookId;
+
+        // validation
+        const isExists = await Book.exists({ _id: id });
+        if (!isExists) {
+          const error = new Error("Book not found") as any;
+          error.status = 404;
+          error.name = "404 Not found";
+          error.description =
+            "The provided book ID is invalid. Please ensure you are using a valid ID that exists in the book collection.";
+          throw error;
+        }
+
         const result = await Book.findById(id);
 
         res.json({
@@ -100,6 +112,17 @@ const bookRouter = express.Router();
         const id = req.params.bookId;
         const body = await bookZodSchema.parseAsync(req.body);
 
+        // validation
+        const isExists = await Book.exists({ _id: id });
+        if (!isExists) {
+          const error = new Error("Book not found") as any;
+          error.status = 404;
+          error.name = "404 Not found";
+          error.description =
+            "The provided book ID is invalid. Please ensure you are using a valid ID that exists in the book collection.";
+          throw error;
+        }
+
         const result = await Book.findByIdAndUpdate(id, body, {
           new: true,
           runValidators: true,
@@ -128,11 +151,12 @@ const bookRouter = express.Router();
         // validation
         const isExists = await Book.exists({ _id: id });
         if (!isExists) {
-          return res.status(404).json({
-            success: false,
-            message: "Book not found",
-            data: null,
-          });
+          const error = new Error("Book not found") as any;
+          error.status = 404;
+          error.name = "404 Not found";
+          error.description =
+            "The provided book ID is invalid. Please ensure you are using a valid ID that exists in the book collection.";
+          throw error;
         }
 
         await Book.findByIdAndDelete(id);
