@@ -31,6 +31,9 @@ const borrowZodSchema = z.object({
     .transform((value) => new Date(value))
     .refine((date) => !isNaN(date.getTime()), {
       message: "Invalid date format",
+    })
+    .refine((date) => date >= new Date(), {
+      message: "Due date must be in the future",
     }),
 });
 
