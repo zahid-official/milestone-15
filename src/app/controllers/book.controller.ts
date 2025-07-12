@@ -58,8 +58,8 @@ const bookRouter = express.Router();
         const id = req.params.bookId;
 
         // validation
-        const isExists = await Book.exists({ _id: id });
-        if (!isExists) {
+        const book = await Book.findById(id);
+        if (!book) {
           const error = new Error("Book not found") as any;
           error.status = 404;
           error.name = "404 Not found";
@@ -104,7 +104,6 @@ const bookRouter = express.Router();
 
 // update operations
 {
-  // update a book
   bookRouter.put(
     "/:bookId",
     async (req: Request, res: Response, next: NextFunction) => {
@@ -113,8 +112,8 @@ const bookRouter = express.Router();
         const body = await bookUpdateZodSchema.parseAsync(req.body);
 
         // validation
-        const isExists = await Book.exists({ _id: id });
-        if (!isExists) {
+        const book = await Book.findById(id);
+        if (!book) {
           const error = new Error("Book not found") as any;
           error.status = 404;
           error.name = "404 Not found";
@@ -149,8 +148,8 @@ const bookRouter = express.Router();
         const id = req.params.bookId;
 
         // validation
-        const isExists = await Book.exists({ _id: id });
-        if (!isExists) {
+        const book = await Book.findById(id);
+        if (!book) {
           const error = new Error("Book not found") as any;
           error.status = 404;
           error.name = "404 Not found";
