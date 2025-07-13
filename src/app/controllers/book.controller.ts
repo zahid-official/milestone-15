@@ -58,16 +58,6 @@ const bookRouter = express.Router();
         const id = req.params.bookId;
         const result = await Book.findById(id);
 
-        // validation
-        if (!result) {
-          const error = new Error("Book not found") as any;
-          error.status = 404;
-          error.name = "404 Not found";
-          error.description =
-            "The provided book ID is invalid. Please ensure you are using a valid ID that exists in the book collection.";
-          throw error;
-        }
-
         res.json({
           success: true,
           message: "Book retrieved successfully",
@@ -113,16 +103,6 @@ const bookRouter = express.Router();
           runValidators: true,
         });
 
-        // validation
-        if (!result) {
-          const error = new Error("Book not found") as any;
-          error.status = 404;
-          error.name = "404 Not found";
-          error.description =
-            "The provided book ID is invalid. Please ensure you are using a valid ID that exists in the book collection.";
-          throw error;
-        }
-
         res.json({
           success: true,
           message: "Book updated successfully",
@@ -142,17 +122,7 @@ const bookRouter = express.Router();
     async (req: Request, res: Response, next: NextFunction) => {
       try {
         const id = req.params.bookId;
-        const result = await Book.findByIdAndDelete(id);
-
-        // validation
-        if (!result) {
-          const error = new Error("Book not found") as any;
-          error.status = 404;
-          error.name = "404 Not found";
-          error.description =
-            "The provided book ID is invalid. Please ensure you are using a valid ID that exists in the book collection.";
-          throw error;
-        }
+        await Book.findByIdAndDelete(id);
 
         res.json({
           success: true,
