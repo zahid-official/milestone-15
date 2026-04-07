@@ -229,27 +229,27 @@ DB_NAME=your_database_name
 
 <div>
 <pre>
-                  Client sends request ──► Express Router matches endpoint
-                                                      │
-                                      ┌────────────────┘
-                                      ▼
-                            Zod validates request body
-                            ┌──── Pass ────┐
-                            ▼              ▼
-                          Valid          Invalid
-                            │              │
-                            ▼              ▼
-                      Controller       Return 400
-                      executes         Validation Error
-                            │
-                            ▼
-                    Mongoose Model ──► MongoDB
-                    (Static methods,
-                      Pre-save hooks)
-                            │
-                            ▼
-                    Return JSON response
-                    { success, message, data }
+                          Client sends request ──► Express Router matches endpoint
+                                                              │
+                                              ┌───────────────┘
+                                              ▼
+                                    Zod validates request body
+                                    ┌──── Pass ────┐
+                                    ▼              ▼
+                                  Valid          Invalid
+                                    │              │
+                                    ▼              ▼
+                              Controller       Return 400
+                              executes         Validation Error
+                                    │
+                                    ▼
+                            Mongoose Model ──► MongoDB
+                            (Static methods,
+                              Pre-save hooks)
+                                    │
+                                    ▼
+                            Return JSON response
+                            { success, message, data }
 </pre>
 </div>
 
