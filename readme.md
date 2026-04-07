@@ -6,7 +6,7 @@
 
 A comprehensive library management system with book CRUD operations, borrowing workflows, aggregation pipelines and strict business logic enforcement.
 
-[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/zahid-official/milestone-15)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/zahid-official/milestone-15-libraryManagement)
 <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
 <img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express" />
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
@@ -178,7 +178,7 @@ milestone-15/
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/zahid-official/milestone-15.git
+git clone https://github.com/zahid-official/milestone-15-libraryManagement.git
 
 # 2. Navigate to the project directory
 cd milestone-15
