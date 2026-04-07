@@ -125,7 +125,7 @@ A comprehensive library management system with book CRUD operations, borrowing w
                       │  └───────────────────────────┬──────────────────────────┘    │
                       │                              │                               │
                       └──────────────────────────────┼───────────────────────────────┘
-                                                    ▼
+                                                     ▼
                                     ┌─────────────────────────────┐
                                     │         MongoDB Atlas       │
                                     │       (Books + Borrows)     │
@@ -227,29 +227,29 @@ DB_NAME=your_database_name
 
 ## ⚙️ How It Works
 
-<div align="center">
+<div>
 <pre>
-Client sends request ──► Express Router matches endpoint
-                                     │
-                    ┌────────────────┘
-                    ▼
-          Zod validates request body
-           ┌──── Pass ────┐
-           ▼              ▼
-        Valid          Invalid
-           │              │
-           ▼              ▼
-     Controller       Return 400
-     executes         Validation Error
-           │
-           ▼
-   Mongoose Model ──► MongoDB
-   (Static methods,
-    Pre-save hooks)
-           │
-           ▼
-   Return JSON response
-   { success, message, data }
+                  Client sends request ──► Express Router matches endpoint
+                                                      │
+                                      ┌────────────────┘
+                                      ▼
+                            Zod validates request body
+                            ┌──── Pass ────┐
+                            ▼              ▼
+                          Valid          Invalid
+                            │              │
+                            ▼              ▼
+                      Controller       Return 400
+                      executes         Validation Error
+                            │
+                            ▼
+                    Mongoose Model ──► MongoDB
+                    (Static methods,
+                      Pre-save hooks)
+                            │
+                            ▼
+                    Return JSON response
+                    { success, message, data }
 </pre>
 </div>
 
