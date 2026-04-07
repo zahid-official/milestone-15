@@ -2,9 +2,9 @@
 
 <img src="https://cdn-icons-png.flaticon.com/512/2702/2702134.png" alt="Library Logo" width="50" />
 
-# Library Management API - Express, TypeScript & MongoDB
+# Library Management API
 
-A comprehensive library management system with book CRUD operations, borrowing workflows, aggregation pipelines, and strict business logic enforcement.
+A comprehensive library management system with book CRUD operations, borrowing workflows, aggregation pipelines and strict business logic enforcement.
 
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/zahid-official/milestone-15)
 <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
@@ -20,9 +20,9 @@ A comprehensive library management system with book CRUD operations, borrowing w
 
 ## 🔍 Overview
 
-**Library Management API** is a RESTful backend service for managing books and tracking borrowing activities. It features schema validation with Zod, MongoDB aggregation pipelines for borrowed books summaries, Mongoose static methods and middleware hooks, and comprehensive business logic enforcement — ensuring data consistency from borrow to return.
+**Library Management API** is a RESTful backend service for managing books and tracking borrowing activities. It features schema validation with Zod, MongoDB aggregation pipelines for borrowed books summaries, Mongoose static methods and middleware hooks and comprehensive business logic enforcement - ensuring data consistency from borrow to return.
 
-> _Where every book finds its reader, and every reader finds their book._
+> _Where every book finds its reader and every reader finds their book._
 
 <br/>
 
@@ -35,8 +35,8 @@ A comprehensive library management system with book CRUD operations, borrowing w
 <tr><th align="left">Feature</th><th align="left">Description</th></tr>
 </thead>
 <tbody>
-<tr><td><b>Full CRUD Operations</b></td><td>Create, read, update, and delete books with complete lifecycle management</td></tr>
-<tr><td><b>Genre-Based Filtering</b></td><td>Filter books by genre — Fiction, Non-Fiction, Science, History, Biography, Fantasy</td></tr>
+<tr><td><b>Full CRUD Operations</b></td><td>Create, read, update and delete books with complete lifecycle management</td></tr>
+<tr><td><b>Genre-Based Filtering</b></td><td>Filter books by genre - Fiction, Non-Fiction, Science, History, Biography, Fantasy</td></tr>
 <tr><td><b>Advanced Sorting</b></td><td>Sort results by any field in ascending or descending order with configurable limits</td></tr>
 <tr><td><b>ISBN Uniqueness</b></td><td>Enforce unique ISBN constraints to prevent duplicate book entries</td></tr>
 </tbody>
@@ -66,7 +66,7 @@ A comprehensive library management system with book CRUD operations, borrowing w
 <tr><td><b>Zod Schema Validation</b></td><td>Strong input validation with custom error messages for every field</td></tr>
 <tr><td><b>Global Error Handler</b></td><td>Centralized middleware catches and formats all errors consistently</td></tr>
 <tr><td><b>Route Protection</b></td><td>Custom middleware for handling undefined routes with clear feedback</td></tr>
-<tr><td><b>Business Logic Errors</b></td><td>Descriptive error responses for insufficient copies, invalid IDs, and more</td></tr>
+<tr><td><b>Business Logic Errors</b></td><td>Descriptive error responses for insufficient copies, invalid IDs and more</td></tr>
 </tbody>
 </table>
 
@@ -150,11 +150,11 @@ milestone-15/
     ├── app.ts                     # Express app setup and route mounting
     │
     └── app/
-        ├── controllers/           # Route handlers — book.controller, borrow.controller
-        ├── interfaces/            # TypeScript interfaces — book.interface, borrow.interface
-        ├── models/                # Mongoose schemas, static methods, and middleware
+        ├── controllers/           # Route handlers - book.controller, borrow.controller
+        ├── interfaces/            # TypeScript interfaces - book.interface, borrow.interface
+        ├── models/                # Mongoose schemas, static methods and middleware
         ├── middlewares/           # Global error handler and route-not-found handler
-        └── zodSchemas/            # Zod validation schemas — book.zod, borrow.zod
+        └── zodSchemas/            # Zod validation schemas - book.zod, borrow.zod
 ```
 
 <br/>
@@ -253,12 +253,12 @@ DB_NAME=your_database_name
 </pre>
 </div>
 
-1. **Request Arrives** — The client hits an endpoint like `POST /api/books` or `POST /api/borrow`.
-2. **Validation Gate** — Zod schemas validate the incoming request body, rejecting malformed data with descriptive errors.
-3. **Controller Logic** — The matched controller processes the request using Mongoose models and static methods.
-4. **Business Rules** — Pre-save middleware auto-toggles book `available` status; the `borrowBook()` static method enforces copy limits.
-5. **Aggregation** — The borrow summary endpoint uses `$group`, `$lookup`, `$unwind`, and `$project` stages for a clean report.
-6. **Response** — All responses follow a consistent `{ success, message, data }` JSON structure.
+1. **Request Arrives** - The client hits an endpoint like `POST /api/books` or `POST /api/borrow`.
+2. **Validation Gate** - Zod schemas validate the incoming request body, rejecting malformed data with descriptive errors.
+3. **Controller Logic** - The matched controller processes the request using Mongoose models and static methods.
+4. **Business Rules** - Pre-save middleware auto-toggles book `available` status; the `borrowBook()` static method enforces copy limits.
+5. **Aggregation** - The borrow summary endpoint uses `$group`, `$lookup`, `$unwind` and `$project` stages for a clean report.
+6. **Response** - All responses follow a consistent `{ success, message, data }` JSON structure.
 
 <br/>
 
@@ -338,7 +338,7 @@ Error responses include additional context:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/zahid-web)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:zahid.official8@gmail.com)
 
-  <p>Creating impactful digital experiences with passion and purposeful design</p>
+  <p>Dedicated to building high-performance backend systems and scalable web applications</p>
 </div>
 
 <br/>
@@ -362,4 +362,4 @@ git push origin feature/your-feature-name
 # 5. Open a Pull Request against the main branch
 ```
 
-<p align="center"><b>Library Management API</b> — <i>Where every book finds its reader, and every reader finds their book.</i></p>
+<p align="center"><b>Library Management API</b> - <i>Where every book finds its reader and every reader finds their book.</i></p>
