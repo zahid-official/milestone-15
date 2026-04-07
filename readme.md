@@ -94,42 +94,42 @@ A comprehensive library management system with book CRUD operations, borrowing w
 
 ## 🏗️ Architecture
 
-<div align="center">
+<div>
 <pre>
-┌──────────────────────────────────────────────────────────────┐
-│                         Client                               │
-│              (Postman / cURL / Frontend)                      │
-└────────────────────────┬─────────────────────────────────────┘
-                         │  HTTP Requests
-                         ▼
-┌──────────────────────────────────────────────────────────────┐
-│  Express Server (TypeScript)                                  │
-│  ┌────────────────────────────────────────────────────────┐   │
-│  │  Middleware Layer                                      │   │
-│  │  • Zod Schema Validation                              │   │
-│  │  • Global Error Handler                               │   │
-│  │  • Route Not Found Handler                            │   │
-│  └───────────────────────┬────────────────────────────────┘   │
-│                          ▼                                    │
-│  ┌──────────────┐  ┌──────────────┐                          │
-│  │  Controllers │  │  Controllers │                          │
-│  │  (Book)      │  │  (Borrow)    │                          │
-│  └──────┬───────┘  └──────┬───────┘                          │
-│         │                 │                                   │
-│         ▼                 ▼                                   │
-│  ┌──────────────────────────────────────────────────────┐    │
-│  │  Mongoose Models + Static Methods + Middleware       │    │
-│  │  • Pre-save hooks (availability toggle)              │    │
-│  │  • Static method: borrowBook()                       │    │
-│  │  • Aggregation pipeline (borrow summary)             │    │
-│  └──────────────────────┬───────────────────────────────┘    │
-│                         │                                     │
-└─────────────────────────┼─────────────────────────────────────┘
-                          ▼
-              ┌───────────────────────┐
-              │   MongoDB Atlas       │
-              │   (Books + Borrows)   │
-              └───────────────────────┘
+                            ┌──────────────────────────────────────────────────────────────┐
+                            │                         Client                               │
+                            │              (Postman / cURL / Frontend)                     │
+                            └─────────────────────────────┬────────────────────────────────┘
+                                                          │  HTTP Requests
+                                                          ▼
+                            ┌──────────────────────────────────────────────────────────────┐
+                            │               Express Server (TypeScript)                    │
+                            │  ┌────────────────────────────────────────────────────────┐  │
+                            │  │                    Middleware Layer                    │  │
+                            │  │  • Zod Schema Validation                               │  │
+                            │  │  • Global Error Handler                                │  │
+                            │  │  • Route Not Found Handler                             │  │
+                            │  └───────────────────────────┬────────────────────────────┘  │
+                            │                              ▼                               │
+                            │              ┌──────────────┐  ┌──────────────┐              │
+                            │              │  Controllers │  │  Controllers │              │
+                            │              │  (Book)      │  │  (Borrow)    │              │
+                            │              └──────┬───────┘  └──────┬───────┘              │
+                            │                     │                 │                      │
+                            │                     ▼                 ▼                      │
+                            │  ┌──────────────────────────────────────────────────────┐    │
+                            │  │      Mongoose Models + Static Methods + Middleware   │    │
+                            │  │  • Pre-save hooks (availability toggle)              │    │
+                            │  │  • Static method: borrowBook()                       │    │
+                            │  │  • Aggregation pipeline (borrow summary)             │    │
+                            │  └───────────────────────────┬──────────────────────────┘    │
+                            │                              │                               │
+                            └──────────────────────────────┼───────────────────────────────┘
+                                                          ▼
+                                          ┌─────────────────────────────┐
+                                          │         MongoDB Atlas       │
+                                          │       (Books + Borrows)     │
+                                          └─────────────────────────────┘
 </pre>
 </div>
 
