@@ -1,111 +1,306 @@
-# Library Management API with Express, TypeScript & MongoDB
+<div align="center">
 
-A comprehensive library management system built with Node.js, Express, TypeScript, and MongoDB. This system allows you to manage books and track borrowing activities with proper business logic enforcement.
+<img src="https://cdn-icons-png.flaticon.com/512/2702/2702134.png" alt="Library Logo" width="50" />
 
-## 🎯 Objective
+# Library Management API - Express, TypeScript & MongoDB
 
-Develop a Library Management System using Express, TypeScript, and MongoDB (via Mongoose) with advanced features including:
+A comprehensive library management system with book CRUD operations, borrowing workflows, aggregation pipelines, and strict business logic enforcement.
 
-- **Proper schema validation** with Zod
-- **Business logic enforcement** (availability control on borrow)
-- **MongoDB aggregation pipeline** for borrowed books summary
-- **Mongoose static methods** for complex operations
-- **Mongoose middleware** (pre/post hooks)
-- **Advanced filtering** and sorting capabilities
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/zahid-official/milestone-15)
+<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
+<img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express" />
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+<img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
+<img src="https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white" alt="Mongoose" />
+<img src="https://img.shields.io/badge/Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white" alt="Zod" />
 
-## Features
+</div>
 
-- **Book Management**: Create, read, update, and delete books
-- **Borrowing System**: Track which books are borrowed with quantity control
-- **Search & Filter**: Filter books by genre and sort them by various fields
-- **Validation**: Strong input validation using Zod with custom error messages
-- **Error Handling**: Comprehensive error handling with clear, structured responses
-- **Database**: MongoDB with Mongoose for robust data management
-- **Business Logic**: Automatic availability control and copy management
+<br/>
 
-## Tech Stack
+## 🔍 Overview
 
-- **Backend**: Node.js, Express.js
-- **Language**: TypeScript
-- **Database**: MongoDB with Mongoose
-- **Validation**: Zod
-- **Environment**: dotenv for configuration
+**Library Management API** is a RESTful backend service for managing books and tracking borrowing activities. It features schema validation with Zod, MongoDB aggregation pipelines for borrowed books summaries, Mongoose static methods and middleware hooks, and comprehensive business logic enforcement — ensuring data consistency from borrow to return.
 
-## Getting Started
+> _Where every book finds its reader, and every reader finds their book._
+
+<br/>
+
+## ✨ Key Features
+
+### 📚 Book Management
+
+<table align="center">
+<thead>
+<tr><th align="left">Feature</th><th align="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td><b>Full CRUD Operations</b></td><td>Create, read, update, and delete books with complete lifecycle management</td></tr>
+<tr><td><b>Genre-Based Filtering</b></td><td>Filter books by genre — Fiction, Non-Fiction, Science, History, Biography, Fantasy</td></tr>
+<tr><td><b>Advanced Sorting</b></td><td>Sort results by any field in ascending or descending order with configurable limits</td></tr>
+<tr><td><b>ISBN Uniqueness</b></td><td>Enforce unique ISBN constraints to prevent duplicate book entries</td></tr>
+</tbody>
+</table>
+
+### 🔄 Borrowing System
+
+<table align="center">
+<thead>
+<tr><th align="left">Feature</th><th align="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td><b>Quantity-Aware Borrowing</b></td><td>Borrow multiple copies at once with automatic stock deduction</td></tr>
+<tr><td><b>Availability Control</b></td><td>Books automatically become unavailable when all copies are borrowed</td></tr>
+<tr><td><b>Aggregation Summary</b></td><td>MongoDB aggregation pipeline provides a grouped summary of all borrowed books</td></tr>
+<tr><td><b>Due Date Validation</b></td><td>Enforce future-dated due dates to maintain borrowing integrity</td></tr>
+</tbody>
+</table>
+
+### 🛡️ Validation & Error Handling
+
+<table align="center">
+<thead>
+<tr><th align="left">Feature</th><th align="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td><b>Zod Schema Validation</b></td><td>Strong input validation with custom error messages for every field</td></tr>
+<tr><td><b>Global Error Handler</b></td><td>Centralized middleware catches and formats all errors consistently</td></tr>
+<tr><td><b>Route Protection</b></td><td>Custom middleware for handling undefined routes with clear feedback</td></tr>
+<tr><td><b>Business Logic Errors</b></td><td>Descriptive error responses for insufficient copies, invalid IDs, and more</td></tr>
+</tbody>
+</table>
+
+<br/>
+
+## 🛠️ Tech Stack
+
+<table align="center">
+<thead>
+<tr><th align="left">Technology</th><th align="center">Version</th><th align="left">Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td><b>Node.js</b></td><td align="center"><code>v18+</code></td><td>JavaScript runtime environment</td></tr>
+<tr><td><b>Express</b></td><td align="center"><code>^5.1.0</code></td><td>Minimal and flexible web framework</td></tr>
+<tr><td><b>TypeScript</b></td><td align="center"><code>^5.8.3</code></td><td>Static type checking and enhanced DX</td></tr>
+<tr><td><b>MongoDB</b></td><td align="center"><code>^6.17.0</code></td><td>NoSQL document database driver</td></tr>
+<tr><td><b>Mongoose</b></td><td align="center"><code>^8.16.2</code></td><td>Elegant MongoDB object modeling</td></tr>
+<tr><td><b>Zod</b></td><td align="center"><code>^4.0.3</code></td><td>TypeScript-first schema validation</td></tr>
+<tr><td><b>dotenv</b></td><td align="center"><code>^17.2.0</code></td><td>Environment variable management</td></tr>
+<tr><td><b>@types/express</b></td><td align="center"><code>^5.0.3</code></td><td>TypeScript type definitions for Express</td></tr>
+</tbody>
+</table>
+
+<br/>
+
+## 🏗️ Architecture
+
+<div align="center">
+<pre>
+┌──────────────────────────────────────────────────────────────┐
+│                         Client                               │
+│              (Postman / cURL / Frontend)                      │
+└────────────────────────┬─────────────────────────────────────┘
+                         │  HTTP Requests
+                         ▼
+┌──────────────────────────────────────────────────────────────┐
+│  Express Server (TypeScript)                                  │
+│  ┌────────────────────────────────────────────────────────┐   │
+│  │  Middleware Layer                                      │   │
+│  │  • Zod Schema Validation                              │   │
+│  │  • Global Error Handler                               │   │
+│  │  • Route Not Found Handler                            │   │
+│  └───────────────────────┬────────────────────────────────┘   │
+│                          ▼                                    │
+│  ┌──────────────┐  ┌──────────────┐                          │
+│  │  Controllers │  │  Controllers │                          │
+│  │  (Book)      │  │  (Borrow)    │                          │
+│  └──────┬───────┘  └──────┬───────┘                          │
+│         │                 │                                   │
+│         ▼                 ▼                                   │
+│  ┌──────────────────────────────────────────────────────┐    │
+│  │  Mongoose Models + Static Methods + Middleware       │    │
+│  │  • Pre-save hooks (availability toggle)              │    │
+│  │  • Static method: borrowBook()                       │    │
+│  │  • Aggregation pipeline (borrow summary)             │    │
+│  └──────────────────────┬───────────────────────────────┘    │
+│                         │                                     │
+└─────────────────────────┼─────────────────────────────────────┘
+                          ▼
+              ┌───────────────────────┐
+              │   MongoDB Atlas       │
+              │   (Books + Borrows)   │
+              └───────────────────────┘
+</pre>
+</div>
+
+<br/>
+
+## 📂 Project Structure
+
+```
+milestone-15/
+│
+├── package.json                   # Dependencies and scripts
+├── tsconfig.json                  # TypeScript configuration
+├── vercel.json                    # Vercel deployment config
+├── .env                           # Environment variables (not committed)
+│
+└── src/
+    ├── server.ts                  # MongoDB connection and server bootstrap
+    ├── app.ts                     # Express app setup and route mounting
+    │
+    └── app/
+        ├── controllers/           # Route handlers — book.controller, borrow.controller
+        ├── interfaces/            # TypeScript interfaces — book.interface, borrow.interface
+        ├── models/                # Mongoose schemas, static methods, and middleware
+        ├── middlewares/           # Global error handler and route-not-found handler
+        └── zodSchemas/            # Zod validation schemas — book.zod, borrow.zod
+```
+
+<br/>
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
-- MongoDB Atlas account or local MongoDB installation
-- npm or yarn package manager
+<table align="center">
+<thead>
+<tr><th align="left">Requirement</th><th align="left">Details</th></tr>
+</thead>
+<tbody>
+<tr><td><b>Node.js</b></td><td>v18 or higher recommended</td></tr>
+<tr><td><b>npm</b></td><td>Comes bundled with Node.js</td></tr>
+<tr><td><b>MongoDB Atlas</b></td><td>Cloud database account (or local MongoDB instance)</td></tr>
+</tbody>
+</table>
 
 ### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone <your-repository-url>
-   cd library-management-system
-   ```
+```bash
+# 1. Clone the repository
+git clone https://github.com/zahid-official/milestone-15.git
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+# 2. Navigate to the project directory
+cd milestone-15
 
-3. **Set up environment variables**
-   
-   Create a `.env` file in the root directory and add:
-   ```env
-   PORT=3000
-   DB_USER=your_mongodb_username
-   DB_PASSWORD=your_mongodb_password
-   DB_NAME=your_database_name
-   ```
+# 3. Install dependencies
+npm install
 
-4. **Start the server**
-   ```bash
-   npm run dev
-   ```
+# 4. Set up environment variables (see section below)
 
-   The server will start on `http://localhost:3000`
-
-### Project Structure
-
-```
-├── src/
-│   ├── app/
-│   │   ├── controllers/
-│   │   │   ├── book.controller.ts
-│   │   │   └── borrow.controller.ts
-│   │   ├── interfaces/
-│   │   │   ├── book.interface.ts
-│   │   │   └── borrow.interface.ts
-│   │   ├── models/
-│   │   │   ├── book.model.ts
-│   │   │   └── borrow.model.ts
-│   │   ├── middlewares/
-│   │   │   ├── globalErrorHandler.ts
-│   │   │   └── routeNotFoundHandler.ts
-│   │   └── zodSchemas/
-│   │       ├── book.zod.ts
-│   │       └── borrow.zod.ts
-│   ├── app.ts
-│   └── server.ts
-├── .env
-├── package.json
-└── README.md
+# 5. Start the development server
+npm run dev
 ```
 
-## API Documentation
+The server will start on `http://localhost:3000` by default.
+
+<br/>
+
+## 🔑 Environment Variables
+
+Create a `.env` file in the project root with the following credentials:
+
+```env
+PORT=3000
+DB_USER=your_mongodb_username
+DB_PASSWORD=your_mongodb_password
+DB_NAME=your_database_name
+```
+
+> **Note:** Never commit `.env` to version control. The `.gitIgnore` already excludes it.
+
+<br/>
+
+## 📜 Available Scripts
+
+<table align="center">
+<thead>
+<tr><th align="left">Command</th><th align="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>npm run dev</code></td><td>Start the dev server with <code>ts-node-dev</code> (auto-restart on changes)</td></tr>
+<tr><td><code>npm test</code></td><td>Run the test suite (placeholder)</td></tr>
+</tbody>
+</table>
+
+<br/>
+
+## ⚙️ How It Works
+
+<div align="center">
+<pre>
+Client sends request ──► Express Router matches endpoint
+                                     │
+                    ┌────────────────┘
+                    ▼
+          Zod validates request body
+           ┌──── Pass ────┐
+           ▼              ▼
+        Valid          Invalid
+           │              │
+           ▼              ▼
+     Controller       Return 400
+     executes         Validation Error
+           │
+           ▼
+   Mongoose Model ──► MongoDB
+   (Static methods,
+    Pre-save hooks)
+           │
+           ▼
+   Return JSON response
+   { success, message, data }
+</pre>
+</div>
+
+1. **Request Arrives** — The client hits an endpoint like `POST /api/books` or `POST /api/borrow`.
+2. **Validation Gate** — Zod schemas validate the incoming request body, rejecting malformed data with descriptive errors.
+3. **Controller Logic** — The matched controller processes the request using Mongoose models and static methods.
+4. **Business Rules** — Pre-save middleware auto-toggles book `available` status; the `borrowBook()` static method enforces copy limits.
+5. **Aggregation** — The borrow summary endpoint uses `$group`, `$lookup`, `$unwind`, and `$project` stages for a clean report.
+6. **Response** — All responses follow a consistent `{ success, message, data }` JSON structure.
+
+<br/>
+
+## 📡 API Reference
 
 ### Base URL
+
 ```
 http://localhost:3000/api
 ```
 
-### Response Format
+### Books Endpoints
 
-All API responses follow this format:
+<table align="center">
+<thead>
+<tr><th align="left">Method</th><th align="left">Endpoint</th><th align="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>GET</code></td><td><code>/api/books</code></td><td>Get all books (supports <code>filter</code>, <code>sort</code>, <code>sortBy</code>, <code>limit</code>)</td></tr>
+<tr><td><code>GET</code></td><td><code>/api/books/:bookId</code></td><td>Get a single book by ID</td></tr>
+<tr><td><code>POST</code></td><td><code>/api/books</code></td><td>Create a new book</td></tr>
+<tr><td><code>PUT</code></td><td><code>/api/books/:bookId</code></td><td>Update a book by ID</td></tr>
+<tr><td><code>DELETE</code></td><td><code>/api/books/:bookId</code></td><td>Delete a book by ID</td></tr>
+</tbody>
+</table>
+
+### Borrow Endpoints
+
+<table align="center">
+<thead>
+<tr><th align="left">Method</th><th align="left">Endpoint</th><th align="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>GET</code></td><td><code>/api/borrow</code></td><td>Get borrowed books summary (aggregation pipeline)</td></tr>
+<tr><td><code>POST</code></td><td><code>/api/borrow</code></td><td>Borrow a book (deducts copies, enforces availability)</td></tr>
+</tbody>
+</table>
+
+### Request & Response Format
+
+All responses follow this structure:
+
 ```json
 {
   "success": true,
@@ -114,7 +309,8 @@ All API responses follow this format:
 }
 ```
 
-### Error Response Format
+Error responses include additional context:
+
 ```json
 {
   "success": false,
@@ -126,412 +322,44 @@ All API responses follow this format:
 }
 ```
 
-## Books API
+<br/>
 
-### 1. Get All Books
+## 🌟 Author
 
-**GET** `/api/books`
+<div align="center">
+  <a href="https://github.com/zahid-official">
+    <img src="https://github.com/zahid-official.png" width="100" height="100" style="border-radius: 50%;" alt="Zahid Official" />
+  </a>
 
-**Query Parameters:**
-- `filter` (optional): Filter by genre (FICTION, NON_FICTION, SCIENCE, HISTORY, BIOGRAPHY, FANTASY)
-- `sort` (optional): Sort order - "asc" or "desc" (default: "asc")
-- `sortBy` (optional): Sort field (default: "createdAt")
-- `limit` (optional): Number of books to return (default: 10)
+  <h3>Zahid Official</h3>
+  <p><b>Web Developer | Tech Enthusiast</b></p>
 
-**Example:**
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/zahid-official)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/zahid-web)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:zahid.official8@gmail.com)
+
+  <p>Creating impactful digital experiences with passion and purposeful design</p>
+</div>
+
+<br/>
+
+## 🤝 Contributing
+
+Contributions are welcome and appreciated! Here's how you can help improve **Library Management API**:
+
 ```bash
-GET /api/books?filter=FANTASY&sortBy=createdAt&sort=desc&limit=5
+# 1. Fork the repository
+
+# 2. Create a feature branch
+git checkout -b feature/your-feature-name
+
+# 3. Make your changes and commit
+git commit -m "feat: add your feature description"
+
+# 4. Push to your fork
+git push origin feature/your-feature-name
+
+# 5. Open a Pull Request against the main branch
 ```
 
-**Response:**
-```json
-{
-  "success": true,
-  "message": "Books retrieved successfully",
-  "data": [
-    {
-      "_id": "64f123abc4567890def12345",
-      "title": "The Theory of Everything",
-      "author": "Stephen Hawking",
-      "genre": "SCIENCE",
-      "isbn": "9780553380163",
-      "description": "An overview of cosmology and black holes.",
-      "copies": 5,
-      "available": true,
-      "createdAt": "2024-11-19T10:23:45.123Z",
-      "updatedAt": "2024-11-19T10:23:45.123Z"
-    }
-  ]
-}
-```
-
-### 2. Get Single Book
-
-**GET** `/api/books/:bookId`
-
-**Response:**
-```json
-{
-  "success": true,
-  "message": "Book retrieved successfully",
-  "data": {
-    "_id": "64f123abc4567890def12345",
-    "title": "The Theory of Everything",
-    "author": "Stephen Hawking",
-    "genre": "SCIENCE",
-    "isbn": "9780553380163",
-    "description": "An overview of cosmology and black holes.",
-    "copies": 5,
-    "available": true,
-    "createdAt": "2024-11-19T10:23:45.123Z",
-    "updatedAt": "2024-11-19T10:23:45.123Z"
-  }
-}
-```
-
-### 3. Create New Book
-
-**POST** `/api/books`
-
-**Request Body:**
-```json
-{
-  "title": "The Theory of Everything",
-  "author": "Stephen Hawking",
-  "genre": "SCIENCE",
-  "isbn": "9780553380163",
-  "description": "An overview of cosmology and black holes.",
-  "copies": 5
-}
-```
-
-**Response:**
-```json
-{
-  "success": true,
-  "message": "Book created successfully",
-  "data": {
-    "_id": "64f123abc4567890def12345",
-    "title": "The Theory of Everything",
-    "author": "Stephen Hawking",
-    "genre": "SCIENCE",
-    "isbn": "9780553380163",
-    "description": "An overview of cosmology and black holes.",
-    "copies": 5,
-    "available": true,
-    "createdAt": "2024-11-19T10:23:45.123Z",
-    "updatedAt": "2024-11-19T10:23:45.123Z"
-  }
-}
-```
-
-**Required Fields:**
-- `title` (string)
-- `author` (string)
-- `genre` (enum: FICTION, NON_FICTION, SCIENCE, HISTORY, BIOGRAPHY, FANTASY)
-- `isbn` (string, must be unique)
-- `copies` (integer, minimum 0)
-
-**Optional Fields:**
-- `description` (string)
-
-### 4. Update Book
-
-**PUT** `/api/books/:bookId`
-
-**Request Body:** (All fields are optional)
-```json
-{
-  "copies": 50
-}
-```
-
-**Response:**
-```json
-{
-  "success": true,
-  "message": "Book updated successfully",
-  "data": {
-    "_id": "64f123abc4567890def12345",
-    "title": "The Theory of Everything",
-    "author": "Stephen Hawking",
-    "genre": "SCIENCE",
-    "isbn": "9780553380163",
-    "description": "An overview of cosmology and black holes.",
-    "copies": 50,
-    "available": true,
-    "createdAt": "2024-11-19T10:23:45.123Z",
-    "updatedAt": "2024-11-20T08:30:00.000Z"
-  }
-}
-```
-
-### 5. Delete Book
-
-**DELETE** `/api/books/:bookId`
-
-**Response:**
-```json
-{
-  "success": true,
-  "message": "Book deleted successfully",
-  "data": null
-}
-```
-
-## Borrowing API
-
-### 1. Get Borrowed Books Summary
-
-**GET** `/api/borrow`
-
-**Response:**
-```json
-{
-  "success": true,
-  "message": "Borrowed books summary retrieved successfully",
-  "data": [
-    {
-      "book": {
-        "title": "The Theory of Everything",
-        "isbn": "9780553380163"
-      },
-      "totalQuantity": 5
-    },
-    {
-      "book": {
-        "title": "1984",
-        "isbn": "9780451524935"
-      },
-      "totalQuantity": 3
-    }
-  ]
-}
-```
-
-### 2. Borrow a Book
-
-**POST** `/api/borrow`
-
-**Request Body:**
-```json
-{
-  "book": "64ab3f9e2a4b5c6d7e8f9012",
-  "quantity": 2,
-  "dueDate": "2025-07-18"
-}
-```
-
-**Business Logic:**
-- Verifies the book has enough available copies
-- Deducts the requested quantity from the book's copies
-- If copies become 0, updates `available` to false (using static method)
-- Saves the borrow record with all relevant details
-
-**Required Fields:**
-- `book` (string): Valid MongoDB ObjectId of the book
-- `quantity` (integer): Number of copies to borrow (minimum 1)
-- `dueDate` (string): Due date in YYYY-MM-DD format (must be future date)
-
-**Response:**
-```json
-{
-  "success": true,
-  "message": "Book borrowed successfully",
-  "data": {
-    "_id": "64bc4a0f9e1c2d3f4b5a6789",
-    "book": "64ab3f9e2a4b5c6d7e8f9012",
-    "quantity": 2,
-    "dueDate": "2025-07-18T00:00:00.000Z",
-    "createdAt": "2025-06-18T07:12:15.123Z",
-    "updatedAt": "2025-06-18T07:12:15.123Z"
-  }
-}
-```
-
-## Error Handling
-
-### Common Error Responses
-
-**404 Not Found:**
-```json
-{
-  "success": false,
-  "message": "Book not found",
-  "error": {
-    "name": "404 Not found",
-    "description": "The provided book ID is invalid. Please ensure you are using a valid ID that exists in the book collection."
-  }
-}
-```
-
-**400 Validation Error:**
-```json
-{
-  "message": "Validation failed",
-  "success": false,
-  "error": {
-    "name": "ValidationError",
-    "errors": {
-      "copies": {
-        "message": "Copies must be a positive number",
-        "name": "ValidatorError",
-        "properties": {
-          "message": "Copies must be a positive number",
-          "type": "min",
-          "min": 0
-        },
-        "kind": "min",
-        "path": "copies",
-        "value": -5
-      }
-    }
-  }
-}
-```
-
-**400 Insufficient Copies:**
-```json
-{
-  "success": false,
-  "message": "Not enough copies available to borrow",
-  "error": {
-    "name": "Insufficient copies error",
-    "description": "The requested book is currently unavailable because all copies have already been borrowed. Please try again later or select a different book."
-  }
-}
-```
-
-## Database Schema
-
-### Book Schema
-```typescript
-{
-  title: string (required)
-  author: string (required)
-  genre: enum (required) - FICTION, NON_FICTION, SCIENCE, HISTORY, BIOGRAPHY, FANTASY
-  isbn: string (required, unique)
-  description: string (optional)
-  copies: number (required, minimum 0, integer)
-  available: boolean (auto-calculated based on copies)
-  createdAt: Date (auto-generated)
-  updatedAt: Date (auto-generated)
-}
-```
-
-### Borrow Schema
-```typescript
-{
-  book: ObjectId (required, references Book)
-  quantity: number (required, minimum 1, integer)
-  dueDate: Date (required, must be future date)
-  createdAt: Date (auto-generated)
-  updatedAt: Date (auto-generated)
-}
-```
-
-## Advanced Features
-
-### MongoDB Aggregation Pipeline
-The system uses MongoDB aggregation pipeline for the borrowed books summary:
-- **$group**: Groups borrow records by book ID and sums quantities
-- **$lookup**: Joins with book collection to get book details
-- **$unwind**: Flattens the book details array
-- **$project**: Formats the final output with book title, ISBN, and total quantity
-
-### Mongoose Static Methods
-Custom static method `borrowBook()` handles the complex borrowing logic:
-- Validates book existence
-- Checks available copies
-- Updates book copies and availability
-- Maintains data consistency
-
-### Mongoose Middleware
-Pre-save middleware automatically manages book availability:
-- Sets `available: false` when copies reach 0
-- Sets `available: true` when copies are greater than 0
-
-### Business Logic Enforcement
-- **Availability Control**: Books automatically become unavailable when all copies are borrowed
-- **Copy Management**: System tracks exact number of copies and prevents over-borrowing
-- **Date Validation**: Due dates must be in the future
-- **Quantity Validation**: Ensures positive integers for copies and borrow quantities
-
-## API Compliance
-
-This API strictly follows the provided specifications:
-- **Exact endpoints**: All endpoints match the required format
-- **Response structures**: All responses follow the specified JSON format
-- **Error handling**: Comprehensive error responses with proper status codes
-- **Validation**: Strong input validation with detailed error messages
-
-## Code Quality Features
-
-- **Clean Architecture**: Well-organized code structure with separation of concerns
-- **TypeScript**: Full TypeScript implementation for type safety
-- **Error Handling**: Comprehensive error handling with clear messages
-- **Validation**: Input validation using Zod with custom error messages
-- **Middleware**: Custom middleware for global error handling and route protection
-
-## Testing the API
-
-### Using cURL
-
-**Get all books:**
-```bash
-curl -X GET http://localhost:3000/api/books
-```
-
-**Create a new book:**
-```bash
-curl -X POST http://localhost:3000/api/books \
-  -H "Content-Type: application/json" \
-  -d '{
-    "title": "The Theory of Everything",
-    "author": "Stephen Hawking",
-    "genre": "SCIENCE",
-    "isbn": "9780553380163",
-    "description": "An overview of cosmology and black holes.",
-    "copies": 5
-  }'
-```
-
-**Borrow a book:**
-```bash
-curl -X POST http://localhost:3000/api/borrow \
-  -H "Content-Type: application/json" \
-  -d '{
-    "book": "64ab3f9e2a4b5c6d7e8f9012",
-    "quantity": 2,
-    "dueDate": "2025-07-18"
-  }'
-```
-
-## Environment Variables
-
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `PORT` | Server port (default: 3000) | No |
-| `DB_USER` | MongoDB username | Yes |
-| `DB_PASSWORD` | MongoDB password | Yes |
-| `DB_NAME` | MongoDB database name | Yes |
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License.
-
-## Support
-
-If you encounter any issues or have questions, please create an issue in the repository or contact the development team.
-
----
-
-**Happy coding! 📚**
+<p align="center"><b>Library Management API</b> — <i>Where every book finds its reader, and every reader finds their book.</i></p>
